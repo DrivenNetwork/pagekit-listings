@@ -1,0 +1,22 @@
+{
+  "name": "driven/listings",
+  "module": "driven/listings",
+  "type": "pagekit-extension",
+  "version": "1.0",
+  "title": "Listings",
+  "description": "Create lists for menus, products, events or listed items",
+  "authors": [
+    {
+      "name": "driven.",
+      "email": "contact@driven.network",
+      "homepage": "https://driven.network"
+    }
+  ],
+  "extra": {
+    "scripts": "scripts.php",
+    "icon": "icon.svg"
+  },
+  "archive": {
+    "exclude": ["node_modules"]
+  }
+}
