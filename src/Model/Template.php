@@ -52,6 +52,11 @@ class Template
      */
     public $editor;
 
+    /**
+     * @HasMany(targetEntity="Driven\Listings\Model\Listing", keyFrom="id", keyTo="template_id")
+     */
+    public $listings;
+
     /** @var array */
     protected static $properties = [
         'editor' => 'getEditor',

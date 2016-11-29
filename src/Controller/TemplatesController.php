@@ -14,7 +14,7 @@ class TemplatesController
     public function indexAction()
     {
 
-        $data = Template::findAll();
+        $data = Template::query()->related('editor')->get();
 
         return [
             '$view' => [

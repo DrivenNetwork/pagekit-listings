@@ -17,7 +17,7 @@ class ListingsController
     public function indexAction()
     {
 
-        $data = Listing::findAll();
+        $data = Listing::query()->related('editor')->related('template')->get();
 
         return [
             '$view' => [

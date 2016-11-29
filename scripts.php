@@ -86,7 +86,7 @@ return [
             'id'=>0,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Basic Template',
             'description' => 'Listings Default Template',
@@ -98,11 +98,22 @@ return [
         $app['db']->insert('@listings_template', [
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Image Showcase',
-            'description' => 'Display a large image for each item with it\'s title.',
-            'html' => '<style>.accent-color{color: white;}</style><h2>{{list.title}}</h2><p>{{list.description}}</p><ul class="uk-list" v-for="category in list.categories" data-uk-margin> <li v-for="item in category.items"> <div class="uk-margin-top uk-margin-left uk-position-absolute"> <h2 class="accent-color uk-text-uppercase uk-text-bold uk-margin-remove">{{item.title}}</h2> <span class="accent-color uk-text-small">{{item.description}}</span> </div><img class="uk-width-1-1" :src="item.image"/> </li></ul>',
+            'description' => 'Display a large image for each item with it\'s title and description.',
+            'html' => '<style>.accent-color{color: white;}</style>
+                    <h2>{{list.title}}</h2>
+                    <p v-html="list.description"></p>
+                    <ul class="uk-list" v-for="category in list.categories" data-uk-margin>
+                        <li v-for="item in category.items">
+                            <div class="uk-margin-top uk-margin-left uk-position-absolute">
+                                <h2 class="accent-color uk-text-uppercase uk-text-bold uk-margin-remove">{{item.title}}</h2>
+                                <span class="accent-color uk-text-small" v-html="item.description"></span>
+                            </div>
+                            <img class="uk-width-1-1" :src="item.image"/>
+                        </li>
+                    </ul>',
             'editable' => 1,
             'locked' => 0
         ]);
@@ -112,7 +123,7 @@ return [
             'id' => 1,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Sample List',
             'description' => 'Example of a simple list.<strong> Add the <em>code</em> to any page to view it.</strong>',
@@ -128,7 +139,7 @@ return [
             'listing_id' => 1,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Sample Category',
             'description' => 'Categories group items.',
@@ -142,7 +153,7 @@ return [
             'listing_id' => 1,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Another Category',
             'description' => 'Categories group items.',
@@ -157,7 +168,7 @@ return [
             'listing_id' => 1,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Sample Item',
             'description' => '',
@@ -176,7 +187,7 @@ return [
             'listing_id' => 1,
             'created_by' => 1,
             'created_on' => $now,
-            'modified_by' => 0,
+            'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Drag Me to "Another Category"',
             'description' => '',

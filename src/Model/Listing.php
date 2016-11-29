@@ -63,6 +63,11 @@ class Listing
     public $editor;
 
     /**
+     * @BelongsTo(targetEntity="Driven\Listings\Model\Template", keyFrom="template_id")
+     */
+    public $template;
+
+    /**
      * @HasMany(targetEntity="Driven\Listings\Model\ListingCategory", keyFrom="id", keyTo="listing_id")
      */
     public $categories;
