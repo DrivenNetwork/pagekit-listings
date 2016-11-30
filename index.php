@@ -68,6 +68,10 @@ return [
             'name' => '@listings/templates',
             'controller' => 'Driven\\Listings\\Controller\\TemplatesController'
         ],
+        '/listings/info' => [
+            'name' => '@listings/info',
+            'controller' => 'Driven\\Listings\\Controller\\InfoController'
+        ]
 
     ],
 
@@ -91,6 +95,12 @@ return [
             'parent' => 'listings',
             'label' => 'Templates',
             'url' => '@listings/templates'
+        ],
+
+        'listings: info' => [
+            'parent' => 'listings',
+            'label' => 'Info',
+            'url' => '@listings/info'
         ]
     ]
 ];

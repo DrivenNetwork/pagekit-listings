@@ -49,7 +49,7 @@
                 <td class="uk-text-center"><code title="{{ 'Place this on a Page' | trans}}" >(listings){"id":"{{listing.id}}"}</code></td>
                 <td class="uk-text-center">
                     <a v-if="listing.template" href="/admin/listings/templates/edit?id={{listing.template.id}}" title="{{'Edit Template' | trans}}" data-uk-tooltip>{{listing.template.title}}</a>
-                    <a v-else href="/admin/listings/templates" title="{{'View Templates' | trans}}" data-uk-tooltip>Basic Template</a>
+                    <a v-else href="/admin/listings/templates" title="{{'View Templates' | trans}}" data-uk-tooltip>Default Template</a>
                 </td>
                 <td class="uk-text-center">
                     <div v-show="listing.modified_on && listing.modified_by">{{ listing.modified_on | dateFromEpoch }} <br/> by <a href="/admin/user/edit?id={{listing.editor.id}}">{{listing.editor.username}}</a></div>

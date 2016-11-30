@@ -1,0 +1,24 @@
+.pre {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.pre strong {
+    color: #0055aa;
+}
+
+p.important {
+    border-left: 5px solid #e5e5e5;
+    padding-left: 15px;
+}
+
+.dr-org ul { padding-left: 15px; }
+.dr-org ul li > dl{
+    border-left: 2px solid #e5e5e5;
+    border-bottom: 1px dotted #e5e5e5;
+    padding: 0.5rem;
+    margin: 0;
+}
+.dr-org ul li > dl{ border-color: #f0635e; }
+.dr-org ul li li > dl{ border-color: #ffc2c0; }
+.dr-org ul li li li > dl{ border-color: #fff0f0; }

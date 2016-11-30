@@ -18,7 +18,7 @@ class TemplatesController
 
         return [
             '$view' => [
-                'title' => 'Templates',
+                'title' => 'Listings Templates',
                 'name' => 'driven/listings:views/admin/index.templates.php'
             ],
             '$data' => $data
