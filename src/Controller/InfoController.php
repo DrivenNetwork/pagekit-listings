@@ -15,7 +15,7 @@ class InfoController
         return [
             '$view' => [
                 'title' => 'Listings Info',
-                'name' => 'driven/listings:views/admin/index.info.php'
+                'name' => 'driven/listings:views/admin/info/index.info.php'
             ]
             //'$data' => $data
         ];

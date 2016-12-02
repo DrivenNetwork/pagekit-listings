@@ -7,9 +7,14 @@
     color: #0055aa;
 }
 
-p.important {
+p.important, section.important {
     border-left: 5px solid #e5e5e5;
     padding-left: 15px;
+}
+
+.dr-muted, .dr-muted strong, .dr-muted em{
+    font-weight: normal;
+    color: #aaa;
 }
 
 .dr-pre{
