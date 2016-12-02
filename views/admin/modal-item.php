@@ -1,6 +1,6 @@
 <v-modal v-ref:itemmodal large>
 
-    <form class="uk-form" v-validator="itemForm" @submit.prevent="saveItem(category_model.id) | valid">
+    <form class="uk-form" v-validator="item_form" @submit.prevent="saveItem(category_model.id) | valid">
         <div class="uk-modal-header uk-flex uk-flex-wrap uk-flex-space-between uk-flex-middle">
 
             <h2>{{ item_model.id ? 'Edit Item ' : 'New Item' | trans }}
@@ -24,7 +24,7 @@
                            class="uk-width-1-1" type="text" v-model="item_model.title"
                            v-validate:required/>
                     <p class="uk-form-help-block uk-text-danger">
-                        <span v-show="itemForm.title.invalid"><?= __('Please provide a title') ?></span>
+                        <span v-show="item_form && item_form.title.invalid"><?= __('Please provide a title') ?></span>
                     </p>
                 </div>
                 <div class="uk-form-width-large uk-flex uk-flex-top uk-flex-right">
@@ -64,25 +64,25 @@
                 <div class="uk-panel uk-width-5-10">
                     <div class="uk-panel-box">
                         <div class="uk-flex">
-                            <input v-model="new_modifier.title" placeholder="{{'Modifier'|trans}}" validate:required
+                            <input v-model="new_tag.title" placeholder="{{'Tag'|trans}}" validate:required
                                    class="uk-flex-item-1">
                             <button class="uk-button uk-button-primary uk-margin-small-left"
-                                    @click.stop.prevent="(new_modifier && new_modifier.title) ? addModifier(item_model) : ''">
+                                    @click.stop.prevent="(new_tag && new_tag.title) ? addTag(item_model) : ''">
                                 <i class="uk-icon-plus"></i></button>
                         </div>
 
-                        <ul v-if="item_model.modifiers.length"
+                        <ul v-if="item_model.tags.length"
                             class="uk-list uk-list-striped uk-margin-bottom-remove uk-scrollable-box uk-padding-remove"
                             style="height: 100px;">
-                            <li v-for="modifier in item_model.modifiers">
+                            <li v-for="tag in item_model.tags">
                                 <div class="uk-flex uk-flex-middle uk-flex-space-between uk-visible-hover">
 
-                                    <!--<input class="uk-form-blank uk-form-width-large" v-model="modifier.title"/>-->
-                                    <div class="uk-text-small uk-width-9-10">{{modifier.title}}</div>
+                                    <!--<input class="uk-form-blank uk-form-width-large" v-model="tag.title"/>-->
+                                    <div class="uk-text-small uk-width-9-10">{{tag.title}}</div>
                                     <a href=""
                                        class=" uk-width-1-10 uk-hidden uk-animation-slide-right uk-icon-hover uk-icon-trash-o uk-text-muted"
-                                       data-uk-tooltip title="{{ 'Remove Modifier' | trans}}"
-                                       @click.stop.prevent="removeModifier(item_model, $index)"></a>
+                                       data-uk-tooltip title="{{ 'Remove Tag' | trans}}"
+                                       @click.stop.prevent="removeTag(item_model, $index)"></a>
                                 </div>
                             </li>
                         </ul>

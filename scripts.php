@@ -2,7 +2,7 @@
 
 return [
 
-    'install' => function ($app) {
+    'enable' => function ($app) {
 
         $util = $app['db']->getUtility();
 
@@ -16,8 +16,8 @@ return [
                 $table->addColumn('title', 'string', ['length' => 255]);
                 $table->addColumn('description', 'string', ['length' => 255]);
                 $table->addColumn('template_id', 'integer', ['unsigned' => true, 'length' => 10]);
-                $table->addColumn('available_from', 'time', ['notnull' => false, 'length' => 11]);
-                $table->addColumn('available_to', 'time', ['notnull' => false, 'length' => 11]);
+                $table->addColumn('featured_from', 'time', ['notnull' => false, 'length' => 11]);
+                $table->addColumn('featured_to', 'time', ['notnull' => false, 'length' => 11]);
                 $table->addColumn('position', 'smallint');
                 $table->addColumn('status', 'smallint');
                 $table->setPrimaryKey(['id']);
@@ -37,6 +37,8 @@ return [
                 $table->addColumn('image', 'string', ['length' => 255]);
                 $table->addColumn('position', 'smallint');
                 $table->addColumn('status', 'smallint');
+                $table->addColumn('featured_from', 'time', ['notnull' => false, 'length' => 11]);
+                $table->addColumn('featured_to', 'time', ['notnull' => false, 'length' => 11]);
                 $table->setPrimaryKey(['id']);
             });
         }
@@ -58,7 +60,9 @@ return [
                 $table->addColumn('position', 'smallint');
                 $table->addColumn('status', 'smallint');
                 $table->addColumn('price', 'float', ['default' => 0.00]);
-                $table->addColumn('modifiers', 'json_array');
+                $table->addColumn('tags', 'json_array');
+                $table->addColumn('featured_from', 'time', ['notnull' => false, 'length' => 11]);
+                $table->addColumn('featured_to', 'time', ['notnull' => false, 'length' => 11]);
                 $table->setPrimaryKey(['id']);
 
             });
@@ -90,7 +94,7 @@ return [
             'modified_on' => $now,
             'title' => 'Default Template',
             'description' => 'Listings built-in configurable template.',
-            'html' => '<h2 v-if="list.title" :class="settings.listingTitle || defaults.listingTitle" data-type="List Title">{{list.title}}</h2><div v-if="list.description" :class="settings.listingDescription || defaults.listingDescription" data-type="List Description">{{list.description}}</div><div :class="settings.categoryContainer || defaults.categoryContainer" v-for="category in list.categories | orderBy \'position\'" data-type="Category"> <section :class="settings.categoryTitleDescription || defaults.categoryTitleDescription"> <h3 v-if="category.title" :class="settings.categoryTitle || defaults.categoryTitle" data-type="Category Title">{{category.title}}</h3> <div v-if="category.description" :class="settings.categoryDescription || defaults.categoryDescription" data-type="Category Description">{{category.description}}</div></section> <section class="uk-list uk-flex uk-flex-column" :class="settings.itemContainer || defaults.itemContainer" data-type="Category Items"> <div class="uk-grid" :class="settings.itemContainer || defaults.itemContainer" v-for="item in category.items | orderBy \'position\'" data-type="Item" data-uk-grid-margin> <div v-if="item.image" :class="settings.itemImage || defaults.itemImage" data-type="Item Image"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title"> <img :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </a> <img v-else :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </div><dl v-if="item.title || item.description" :class="settings.itemTitleDescription || defaults.itemTitleDescription" data-type="Item Title and Description"> <dt v-if="item.title" :class="settings.itemTitle || defaults.itemTitle" data-type="Item Title"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title">{{item.title}}</a> <div v-else>{{item.title}}</div></dt> <dd v-if="item.description" :class="settings.itemDescription || defaults.itemDescription" data-type="Item Description" v-html="item.description"> </dd> <div v-if="item.modifiers.length" :class="settings.itemModifiersContainer || defaults.itemModifiersContainer" data-type="Item Modifiers"> <div v-for="modifier in item.modifiers" :class="settings.itemModifier || defaults.itemModifier" data-type="Modifier">{{modifier.title}}</div></div></dl> <div v-if="item.price" :class="settings.itemPrice || defaults.itemPrice" data-type="Item Price">{{item.price | currency}}</div></div></section></div>',
+            'html' => '<h2 v-if="list.title" :class="settings.listingTitle || defaults.listingTitle" data-type="List Title">{{list.title}}</h2><div v-if="list.description" :class="settings.listingDescription || defaults.listingDescription" data-type="List Description">{{list.description}}</div><div :class="settings.categoryContainer || defaults.categoryContainer" v-for="category in list.categories | orderBy \'position\'" data-type="Category"> <section :class="settings.categoryTitleDescription || defaults.categoryTitleDescription"> <h3 v-if="category.title" :class="settings.categoryTitle || defaults.categoryTitle" data-type="Category Title">{{category.title}}</h3> <div v-if="category.description" :class="settings.categoryDescription || defaults.categoryDescription" data-type="Category Description">{{category.description}}</div></section> <section class="uk-list uk-flex uk-flex-column" :class="settings.itemContainer || defaults.itemContainer" data-type="Category Items"> <div class="uk-grid" :class="settings.itemContainer || defaults.itemContainer" v-for="item in category.items | orderBy \'position\'" data-type="Item" data-uk-grid-margin> <div v-if="item.image" :class="settings.itemImage || defaults.itemImage" data-type="Item Image"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title"> <img :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </a> <img v-else :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </div><dl v-if="item.title || item.description" :class="settings.itemTitleDescription || defaults.itemTitleDescription" data-type="Item Title and Description"> <dt v-if="item.title" :class="settings.itemTitle || defaults.itemTitle" data-type="Item Title"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title">{{item.title}}</a> <div v-else>{{item.title}}</div></dt> <dd v-if="item.description" :class="settings.itemDescription || defaults.itemDescription" data-type="Item Description" v-html="item.description"> </dd> <div v-if="item.tags.length" :class="settings.itemTagsContainer || defaults.itemTagsContainer" data-type="Item Tags"> <div v-for="tag in item.tags" :class="settings.itemTag || defaults.itemTag" data-type="Tag">{{tag.title}}</div></div></dl> <div v-if="item.price" :class="settings.itemPrice || defaults.itemPrice" data-type="Item Price">{{item.price | currency}}</div></div></section></div>',
             'editable' => 0,
             'locked' => 1
         ]);
@@ -128,8 +132,8 @@ return [
             'title' => 'Sample List',
             'description' => 'Example of a simple list.<strong> Add the <em>code</em> to any page to view it.</strong>',
             'template_id'=>0,
-            'available_from'=>1480460400,
-            'available_to'=>1480460400,
+            'featured_from'=>1480575600,
+            'featured_to'=>1480633200,
             'position'=>0,
             'status'=>1
         ]);
@@ -142,10 +146,12 @@ return [
             'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Sample Category',
-            'description' => 'Categories group items.',
+            'description' => 'A Group of items',
             'image' => '',
             'position' => 0,
-            'status' => 1
+            'status' => 1,
+            'featured_from'=>'',
+            'featured_to'=>''
         ]);
 
         $app['db']->insert('@listings_category', [
@@ -156,10 +162,12 @@ return [
             'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Another Category',
-            'description' => 'Categories group items.',
+            'description' => 'Another group of items',
             'image' => '',
             'position' => 0,
-            'status' => 1
+            'status' => 1,
+            'featured_from'=>'',
+            'featured_to'=>''
         ]);
 
         $app['db']->insert('@listings_item', [
@@ -171,14 +179,16 @@ return [
             'modified_by' => 1,
             'modified_on' => $now,
             'title' => 'Sample Item',
-            'description' => '',
+            'description' => 'This is the description for the item',
             'image' => 'packages/driven/listings/img/sample-0.jpeg',
             'position' => 0,
             'status' => 1,
             'link' => 'https://driven.network/',
             'actions' => '{}',
             'price' => 10.99,
-            'modifiers' => '{}'
+            'tags' => '{}',
+            'featured_from'=>'',
+            'featured_to'=>''
         ]);
 
         $app['db']->insert('@listings_item', [
@@ -189,15 +199,17 @@ return [
             'created_on' => $now,
             'modified_by' => 1,
             'modified_on' => $now,
-            'title' => 'Drag Me to "Another Category"',
-            'description' => '',
+            'title' => 'Sample Item 2',
+            'description' => 'You can <strong>DRAG ME</strong> to "Another Category"',
             'image' => 'packages/driven/listings/img/sample-1.jpeg',
             'position' => 1,
             'status' => 1,
             'link' => 'https://driven.network/',
             'actions' => '',
             'price' => 19.99,
-            'modifiers' => '{}'
+            'tags' => '{}',
+            'featured_from'=>'',
+            'featured_to'=>''
         ]);
 
     },

@@ -58,8 +58,8 @@ class ListingsController
                     'title' => '',
                     'description' => '',
                     'template_id' => 0,
-                    'available_from' => 1479967200,
-                    'available_to' => 1480028400,
+                    'featured_from' => 1479967200,
+                    'featured_to' => 1480633200,
                     'position' => 0,
                     'status' => 1
                 ];
@@ -89,7 +89,7 @@ class ListingsController
                 'position' => 0,
                 'status' => 1,
                 'price' => '',
-                'modifiers' => []
+                'tags' => []
             ];
 
             $templates = Template::findAll();
@@ -128,12 +128,12 @@ class ListingsController
         $id = $data['id'];
         $now = time();
 
-        $t_from = $data['available_from'];
-        $t_to = $data['available_to'];
+        $t_from = $data['featured_from'];
+        $t_to = $data['featured_to'];
 
         // Set epoch to human time if necessary
-        $available_from = (is_numeric($t_from) && (int)$t_from == $t_from) ? $t_from : strtotime($t_from);
-        $available_to = (is_numeric($t_to) && (int)$t_to == $t_to) ? $t_to : strtotime($t_to);
+        $featured_from = (is_numeric($t_from) && (int)$t_from == $t_from) ? $t_from : strtotime($t_from);
+        $featured_to = (is_numeric($t_to) && (int)$t_to == $t_to) ? $t_to : strtotime($t_to);
 
         if (!$id || !$listing = Listing::find($id)) {
 
@@ -145,8 +145,8 @@ class ListingsController
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'template_id' => $data['template_id'],
-                'available_from' => $available_from,
-                'available_to' => $available_to,
+                'featured_from' => $featured_from,
+                'featured_to' => $featured_to,
                 'position' => $data['position'],
                 'status' => 1
 
@@ -157,8 +157,8 @@ class ListingsController
             $listing->title = $data['title'];
             $listing->description = $data['description'];
             $listing->template_id = $data['template_id'];
-            $listing->available_from = $available_from;
-            $listing->available_to = $available_to;
+            $listing->featured_from = $featured_from;
+            $listing->featured_to = $featured_to;
             $listing->position = $data['position'];
             $listing->status = $data['status'];
         }

@@ -41,10 +41,10 @@ class Listing
     public $template_id;
 
     /** @Column(type="integer") */
-    public $available_from;
+    public $featured_from;
 
     /** @Column(type="integer") */
-    public $available_to;
+    public $featured_to;
 
     /** @Column(type="smallint") */
     public $position;

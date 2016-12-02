@@ -27,7 +27,7 @@
             <tr>
                 <th width="40%">{{ 'Title' | trans }}</th>
                 <th class="uk-text-center">{{ 'Status' | trans }}</th>
-<!--                <th class="uk-text-center">{{ 'Available Times' | trans }}</th>-->
+<!--                <th class="uk-text-center">{{ 'Featured Times' | trans }}</th>-->
                 <th class="uk-text-center">{{ 'Plugin Code' | trans }}</th>
                 <th class="uk-text-center">{{ 'Active Template' | trans }}</th>
                 <th class="uk-text-center">{{ 'Last Updated' | trans }}</th>
@@ -45,7 +45,7 @@
                        @click="toggle(listing)"
                        data-uk-tooltip></a>
                 </td>
-<!--                <td class="uk-text-center">{{ listing.available_from | timeFromEpoch }} <i class="uk-icon-long-arrow-right uk-text-primary uk-text-small"></i> {{ listing.available_to | timeFromEpoch }}</td>-->
+<!--                <td class="uk-text-center">{{ listing.featured_from | timeFromEpoch }} <i class="uk-icon-long-arrow-right uk-text-primary uk-text-small"></i> {{ listing.featured_to | timeFromEpoch }}</td>-->
                 <td class="uk-text-center"><code title="{{ 'Place this on a Page' | trans}}" >(listings){"id":"{{listing.id}}"}</code></td>
                 <td class="uk-text-center">
                     <a v-if="listing.template" href="/admin/listings/templates/edit?id={{listing.template.id}}" title="{{'Edit Template' | trans}}" data-uk-tooltip>{{listing.template.title}}</a>

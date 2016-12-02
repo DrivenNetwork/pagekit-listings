@@ -2,9 +2,8 @@
 
 
 <section id="edit-listing">
-    <? include 'modal-category.php'; ?>
-    <? include 'modal-item.php'; ?>
-    <form class="uk-form uk-form-horizontal uk-margin" v-validator="listForm" @submit.prevent="save | valid">
+
+    <form class="uk-form uk-form-horizontal uk-margin" v-validator="list_form" @submit.prevent="save | valid">
 
         <!--HEADER-->
         <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap">
@@ -41,8 +40,8 @@
 
                     <input name="title" class="uk-width-1-2" type="text" v-model="listing.title" v-validate:required
                            placeholder="{{ 'List Title' | trans }}"/>
-                    <p class="uk-form-help-block uk-text-danger"
-                       v-show="listForm.title.invalid"><?= __('Please provide a name.') ?></p>
+
+                    <p class="uk-form-help-block uk-text-danger" v-show="list_form && list_form.title.invalid"><?= __('Please provide a name.') ?></p>
 
                 </div>
 
@@ -56,20 +55,20 @@
             <div class="uk-width-medium-1-4 uk-form-stacked">
 
                 <div class="uk-form-row">
-                    <span class="uk-form-label">Available Times</span>
-                    <input placeholder="From" v-model="listing.available_from"
-                           value="{{listing.available_from | fromEpoch}}"
+                    <span class="uk-form-label">Featured Times</span>
+                    <input placeholder="From" v-model="listing.featured_from"
+                           value="{{listing.featured_from | fromEpoch}}"
                            class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required
-                           name="availableFrom"
+                           name="featuredFrom"
                            v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"
                            data-uk-timepicker="{format:'12h'}">
-                    <input placeholder="To" v-model="listing.available_to" value="{{listing.available_to | fromEpoch}}"
+                    <input placeholder="To" v-model="listing.featured_to" value="{{listing.featured_to | fromEpoch}}"
                            class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required
-                           name="availableTo"
+                           name="featuredTo"
                            v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"
                            data-uk-timepicker="{format:'12h'}">
                     <p class="uk-form-help-block uk-text-danger"
-                       v-show="(listForm.availableFrom.invalid || listForm.availableTo.invalid)"><?= __('Please select a valid time.') ?></p>
+                       v-show="list_form && (list_form.featuredFrom.invalid || list_form.featuredTo.invalid)"><?= __('Please select a valid time.') ?></p>
 
 
                 </div>
@@ -165,11 +164,9 @@
                                                         <a class="uk-margin-small-right"
                                                            @click.stop.prevent="openItemModal(category.id, item)">
 
-                                                            <strong class="uk-text-primary uk-margin-small-right"> {{
-                                                                item.title }} </strong>
+                                                            <strong class="uk-text-primary uk-margin-small-right"> {{ item.title }} </strong>
                                                             <em v-if="item.price"
-                                                                class="uk-text-small uk-badge-notification uk-badge">{{
-                                                                item.price | currency }}</em>
+                                                                class="uk-text-small uk-badge-notification uk-badge">{{ item.price | currency }}</em>
 
                                                         </a>
                                                         <i class="uk-text-muted uk-icon-image" v-show="item.image"
@@ -202,8 +199,7 @@
                                 <div class="uk-flex uk-margin-top">
                                     <button class="uk-button uk-button-primary"
                                             type="button"
-                                            @click="openItemModal(category.id)">{{ 'Add Item' |
-                                        trans }}
+                                            @click="openItemModal(category.id)">{{ 'Add Item' | trans }}
                                     </button>
                                 </div>
 
@@ -217,6 +213,9 @@
         </div>
 
     </form>
+
+    <? include 'modal-category.php'; ?>
+    <? include 'modal-item.php'; ?>
 
 </section>
 

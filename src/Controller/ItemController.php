@@ -53,7 +53,7 @@ class ItemController
                 'position' => $data['position'],
                 'status' => 1,
                 'price' => $data['price'],
-                'modifiers' => []
+                'tags' => []
 
             ]);
 
@@ -70,7 +70,7 @@ class ItemController
             $item->position = $data['position'];
             $item->status = $data['status'];
             $item->price = $data['price'];
-            $item->modifiers = $data['modifiers'];
+            $item->tags = $data['tags'];
         }
 
         $listing = Listing::find($item->listing_id);

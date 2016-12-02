@@ -29,8 +29,8 @@ return [
 
     'config' => [
         'defaults' => [
-            'listingTitle' => 'uk-h1 uk-text-left',
-            'listingDescription' => 'uk-text-left',
+            'listingTitle' => 'uk-h1',
+            'listingDescription' => '',
 
             'categoryTitleDescription'=>'uk-margin-large-bottom uk-margin-large-top',
             'categoryTitle' => 'uk-h2 uk-text-center uk-text-uppercase uk-margin-remove',
@@ -39,12 +39,12 @@ return [
             'itemContainer'=>'',
             'itemTitleDescription' => 'uk-width-medium-5-10 uk-flex-item-1',
             'itemTitle' => 'uk-h3',
-            'itemDescription' => 'uk-text-left',
+            'itemDescription' => '',
 
             'itemPrice' => 'uk-width-medium-1-10 uk-text-right uk-text-large',
             'itemImage' => 'uk-width-medium-4-10',
-            'itemModifiersContainer' => 'uk-margin-top uk-text-bold uk-text-primary',
-            'itemModifier' => 'uk-badge'
+            'itemTagsContainer' => 'uk-margin-top uk-text-bold uk-text-primary',
+            'itemTag' => 'uk-badge'
 
 
         ]

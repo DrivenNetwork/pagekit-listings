@@ -49,6 +49,12 @@ class ListingCategory
     /** @Column(type="smallint") */
     public $status;
 
+    /** @Column(type="integer") */
+    public $featured_from;
+
+    /** @Column(type="integer") */
+    public $featured_to;
+
     /**
      * @BelongsTo(targetEntity="Pagekit\User\Model\User", keyFrom="created_by")
      */

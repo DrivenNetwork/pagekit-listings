@@ -1,12 +1,14 @@
 $(function () {
+
+    _.extend($data, {
+        item_form : {},
+        list_form : {},
+        new_tag : { title:'' }
+    });
+
     var vue = new Vue({
         el: '#edit-listing',
-        data: function () {
-            $data.itemForm = {};
-            $data.listForm = { title: '', availableFrom: '', availableTo: '' };
-            $data.new_modifier = {};
-            return $data;
-        },
+        data: $data,
         methods: {
             toggle: function (coll, type) {
                 coll.status = !coll.status ? 1 : 0;
@@ -149,12 +151,12 @@ $(function () {
                 })
             },
 
-            addModifier: function (item) {
-                item.modifiers.push(this.new_modifier);
-                this.new_modifier = ''
+            addTag: function (item) {
+                item.tags.push(this.new_tag);
+                this.new_tag = {}
             },
-            removeModifier: function (item, index) {
-                item.modifiers.splice(index, 1);
+            removeTag: function (item, index) {
+                item.tags.splice(index, 1);
             }
         },
         filters: {
@@ -187,7 +189,7 @@ $(function () {
             Vue.set(this.$data.item_model, 'position', ((typeof(model.position) !== 'undefined') ? String(model.position) : false) || _.size(this.$data.listing.categories));
             Vue.set(this.$data.item_model, 'status', model.status || 0);
             Vue.set(this.$data.item_model, 'price', model.price || '');
-            Vue.set(this.$data.item_model, 'modifiers', model.modifiers || []);
+            Vue.set(this.$data.item_model, 'tags', model.tags || []);
         }
     };
 
