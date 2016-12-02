@@ -7,7 +7,7 @@
 
         <div class="uk-width-small-1-1 uk-width-medium-1-4">
             <ul class="uk-nav uk-nav-side"
-                data-uk-switcher="{connect:'#listings-info-content',swiping:false, active:2}">
+                data-uk-switcher="{connect:'#listings-info-content',swiping:false, active:0}">
                 <li><a href="#">Overview</a></li>
                 <li><a href="#">Default Template</a></li>
                 <li><a href="#">Custom Templates</a></li>
@@ -25,23 +25,23 @@
         <div class="uk-width-small-1-1 uk-width-medium-3-4">
             <ul id="listings-info-content" class="uk-switcher">
 
-                <li data-uk-switcher-item="0">
+                <li>
                     <? include 'overview.php'; ?>
                 </li>
 
-                <li data-uk-switcher-item="1">
+                <li>
                     <? include 'default-template.php';?>
                 </li>
 
-                <li data-uk-switcher-item="2">
+                <li>
                     <? include 'custom-templates.php';?>
                 </li>
 
-                <li data-uk-switcher-item="3">
+                <li>
                     <? include 'data-model.php'; ?>
                 </li>
 
-                <li data-uk-switcher-item="4">
+                <li>
                     <? include 'about.php';?>
                 </li>
 

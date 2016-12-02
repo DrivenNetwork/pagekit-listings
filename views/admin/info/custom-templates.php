@@ -5,7 +5,7 @@
 </p>
 
 <p>
-    To create a custom template go to the <a href="#" title="Templates Page">Templates</a> page. From there you can
+    To create a custom template go to the <a href="/admin/listings/templates" title="Templates Page">Templates</a> page. From there you can
     click on the <em class="uk-text-primary uk-text-uppercase">Add Template</em> button to begin.
 </p>
 
@@ -68,8 +68,8 @@
     </div>
 
     <div class="uk-panel dr-pre">
-        <span class="uk-text-warning"><i class="uk-icon-warning"></i> <strong>Assuming there are 2 categories in the collection</strong></span>
-        <br/><br/>
+        <span class="uk-text-warning"><i class="uk-icon-warning"></i></span> <span>Assuming there are 2 categories in the collection</span>
+        <hr/>
         <span class="uk-panel-badge uk-badge">output</span>
         <h2 class="uk-margin-remove">Category Title</h2>
         <p class="uk-margin-remove">Category description</p>
@@ -113,8 +113,8 @@
     </div>
 
     <div class="uk-panel dr-pre">
-        <span class="uk-text-warning"><i class="uk-icon-warning"></i> <strong>Assuming each category contains 2 items</strong></span>
-        <br/><br/>
+        <span class="uk-text-warning"><i class="uk-icon-warning"></i></span> <span>Assuming each category contains 2 items</span>
+        <hr/>
         <span class="uk-panel-badge uk-badge">output</span>
         <h2 class="uk-margin-remove">Category Title</h2>
         <p class="uk-margin-remove">Category description</p>

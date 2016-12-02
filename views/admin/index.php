@@ -46,13 +46,13 @@
                        data-uk-tooltip></a>
                 </td>
 <!--                <td class="uk-text-center">{{ listing.featured_from | timeFromEpoch }} <i class="uk-icon-long-arrow-right uk-text-primary uk-text-small"></i> {{ listing.featured_to | timeFromEpoch }}</td>-->
-                <td class="uk-text-center"><code title="{{ 'Place this on a Page' | trans}}" >(listings){"id":"{{listing.id}}"}</code></td>
+                <td class="uk-text-center"><code title="{{ 'Place this on a Page' | trans}}" data-uk-tooltip>(listings){"id":"{{listing.id}}"}</code></td>
                 <td class="uk-text-center">
                     <a v-if="listing.template" href="/admin/listings/templates/edit?id={{listing.template.id}}" title="{{'Edit Template' | trans}}" data-uk-tooltip>{{listing.template.title}}</a>
                     <a v-else href="/admin/listings/templates" title="{{'View Templates' | trans}}" data-uk-tooltip>Default Template</a>
                 </td>
                 <td class="uk-text-center">
-                    <div v-show="listing.modified_on && listing.modified_by">{{ listing.modified_on | dateFromEpoch }} <br/> by <a href="/admin/user/edit?id={{listing.editor.id}}">{{listing.editor.username}}</a></div>
+                    <div v-show="listing.modified_on && listing.modified_by">{{ listing.modified_on | dateFromEpoch }} by <a href="/admin/user/edit?id={{listing.editor.id}}" title="{{listing.editor.username}}" data-uk-tooltip><i class="uk-icon-user"></i></a></div>
                 </td>
 
             </tr>

@@ -4,6 +4,7 @@ namespace Driven\Listings\Controller;
 
 use Pagekit\Application as App;
 use Driven\Listings\Model\Template;
+use Driven\Listings\Model\Listing;
 
 /**
  * @Access(admin=true)
@@ -140,7 +141,12 @@ class TemplatesController
 
         } else {
 
-            // TODO: Delete Children Categories & Items
+            if($listings = Listing::query()->where('template_id = ?',[$template->id])->get()) {
+               foreach ($listings as $list) {
+                    $list->template_id = 0;
+                    $list->save();
+                }
+            }
 
             $cached = $template;
             $template->delete();

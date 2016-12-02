@@ -43,7 +43,7 @@
                     <div class="uk-text-small" v-html="template.description"></div>
                 </td>
                 <td class="uk-text-center">
-                    <div v-show="template.modified_on && template.modified_by">{{ template.modified_on | dateFromEpoch }} by <a href="/admin/user/edit?id={{template.editor.id}}">{{template.editor.username}}</a></div>
+                    <div v-show="template.modified_on && template.modified_by">{{ template.modified_on | dateFromEpoch }} by <a href="/admin/user/edit?id={{template.editor.id}}" title="{{template.editor.username}}" data-uk-tooltip><i class="uk-icon-user"></i> </a></div>
                 </td>
 
             </tr>

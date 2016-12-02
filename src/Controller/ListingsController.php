@@ -224,8 +224,6 @@ class ListingsController
 
             } else {
 
-                // TODO: Delete Children Categories & Items
-
                 $categories = Category::query()->where('listing_id = ?',[$id])->get();
                 $items = Item::query()->where('listing_id = ?',[$id])->get();
 
