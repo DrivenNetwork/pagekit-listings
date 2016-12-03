@@ -34,9 +34,11 @@ class ListingsModule extends Module
             ->related('editor')
             ->related(['categories' => function ($query) {
                 return $query
+                    ->orderBy('position')
                     ->where('status = ?', [1])
                     ->related(['items' => function ($query) {
                         return $query
+                            ->orderBy('position')
                             ->where('status = ?', [1]);
                     }]);
             }])
@@ -45,6 +47,18 @@ class ListingsModule extends Module
             //throw new App\Exception('Listing Not Available', 404) ;
         } else {
             $template = Template::find($list->template_id);
+
+            // Sort Categories and Update Key Index
+            usort($list->categories, function ($cat1, $cat2) {
+                return $cat1->position <=> $cat2->position;
+            });
+
+            // Sort Items and Update Key Index
+            foreach($list->categories as $sortCategory){
+                usort($sortCategory->items, function ($item1, $item2) {
+                    return $item1->position <=> $item2->position;
+                });
+            }
         }
 
         $app->on('view.data', function ($event, $data) use ($list, $options, $defaults, $template) {

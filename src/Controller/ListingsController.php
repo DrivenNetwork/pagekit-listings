@@ -43,7 +43,15 @@ class ListingsController
                 App::abort(403, __('Insufficient User Rights.'));
             }
 
-            if (!$listing = Listing::query()->where('id = ?', [$id])->related('categories')->related('categories.items')->first()) {
+            if (!$listing = Listing::query()->where('id = ?', [$id])
+                ->related(['categories' => function ($query) {
+                    return $query
+                        ->orderBy('position')
+                        ->related(['items' => function ($query) {
+                            return $query
+                                ->orderBy('position');
+                        }]);
+                }])->first()) {
 
                 if ($id) {
                     App::abort(404, __('Invalid listing id.'));
@@ -94,6 +102,17 @@ class ListingsController
 
             $templates = Template::findAll();
 
+            // Sort Categories and Update Key Index
+            usort($listing->categories, function ($cat1, $cat2) {
+                return $cat1->position <=> $cat2->position;
+            });
+
+            // Sort Items and Update Key Index
+            foreach($listing->categories as $sortCategory){
+                usort($sortCategory->items, function ($item1, $item2) {
+                    return $item1->position <=> $item2->position;
+                });
+            }
 
             $payload = [
                 '$view' => [

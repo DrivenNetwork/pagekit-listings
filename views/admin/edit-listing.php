@@ -54,24 +54,23 @@
             <!--SETTINGS-->
             <div class="uk-width-medium-1-4 uk-form-stacked">
 
-                <div class="uk-form-row">
-                    <span class="uk-form-label">Featured Times</span>
-                    <input placeholder="From" v-model="listing.featured_from"
-                           value="{{listing.featured_from | fromEpoch}}"
-                           class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required
-                           name="featuredFrom"
-                           v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"
-                           data-uk-timepicker="{format:'12h'}">
-                    <input placeholder="To" v-model="listing.featured_to" value="{{listing.featured_to | fromEpoch}}"
-                           class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required
-                           name="featuredTo"
-                           v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"
-                           data-uk-timepicker="{format:'12h'}">
-                    <p class="uk-form-help-block uk-text-danger"
-                       v-show="list_form && (list_form.featuredFrom.invalid || list_form.featuredTo.invalid)"><?= __('Please select a valid time.') ?></p>
-
-
-                </div>
+<!--                NOT IMPLEMENTED YET!-->
+<!--                <div class="uk-form-row">-->
+<!--                    <span class="uk-form-label">Featured Times</span>-->
+<!--                    <input placeholder="From" v-model="listing.featured_from"-->
+<!--                           value="{{listing.featured_from | fromEpoch}}"-->
+<!--                           class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required-->
+<!--                           name="featuredFrom"-->
+<!--                           v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"-->
+<!--                           data-uk-timepicker="{format:'12h'}">-->
+<!--                    <input placeholder="To" v-model="listing.featured_to" value="{{listing.featured_to | fromEpoch}}"-->
+<!--                           class="uk-form-width-small uk-margin-small-bottom" type="text" v-validate:required-->
+<!--                           name="featuredTo"-->
+<!--                           v-validate:pattern.literal="/^(?!00)(\d{1,2}):(\d{2})(:00)?((\s?)([ap]m)|([AP]M))?$/i"-->
+<!--                           data-uk-timepicker="{format:'12h'}">-->
+<!--                    <p class="uk-form-help-block uk-text-danger"-->
+<!--                       v-show="list_form && (list_form.featuredFrom.invalid || list_form.featuredTo.invalid)">--><?//= __('Please select a valid time.') ?><!--</p>-->
+<!--                </div>-->
 
                 <div class="uk-form-row uk-flex uk-flex-column">
                     <span class="uk-form-label">{{'Visibility' | trans }}</span>
@@ -112,6 +111,8 @@
                 <div class="uk-form-row">
                     <div id="sortable-categories" class="uk-sortable"
                          data-uk-sortable="{handleClass:'uk-sortable-handle'}">
+
+                        <? // TODO: Take orderBy from payload and not sort on vue filter?>
 
                         <div v-for="category in listing.categories | orderBy 'position'"
                              data-id="{{category.id}}" data-index="{{$index}}"

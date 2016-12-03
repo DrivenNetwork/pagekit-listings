@@ -1,5 +1,12 @@
 $(function () {
 
+    _.each($data.listing.categories, function(cat){
+        console.log(cat.title + ': ' + cat.position);
+        _.each(cat.items, function(item){
+            console.log(item.title + ': ' + item.position);
+        });
+    });
+
     _.extend($data, {
         item_form : {},
         list_form : {},
@@ -94,10 +101,10 @@ $(function () {
             savePositions: function (positions, type) {
 
                 if (!positions || !positions.length) return;
-                UIkit.notify('Updating');
+
                 this.$http.post('admin/listings/positions', {positions: positions, type: type}).then(
                     function (res) {
-                        UIkit.notify('Updated');
+                        UIkit.notify('Order Updated');
                         this.listing.categories = res.data.listing.categories;
                     }).catch(function () {
                     UIkit.notify('Couldn\'t Update Order');
@@ -193,13 +200,13 @@ $(function () {
         }
     };
 
-    $('#sortable-categories').on('change.uk.sortable', function (e) {
+    $('#sortable-categories').on('change.uk.sortable', _.debounce(function (e) {
         var rows = $(e.currentTarget).children(), positions = [];
         _.each(rows, function (row, i) {
             positions.push({id: $(row).data().id, position: i});
         });
         vue.savePositions(positions, 'categories');
-    });
+    }, 100));
 
     $('.sortable-items').on('change.uk.nestable', _.debounce(function (e, s, el, a) {
 
@@ -219,7 +226,6 @@ $(function () {
 
             });
             vue.savePositions(positions, 'items');
-        }, 100)
-    );
+        }, 100));
 
 });

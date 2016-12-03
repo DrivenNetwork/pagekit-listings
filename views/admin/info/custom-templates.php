@@ -61,7 +61,7 @@
         <div class="pre" v-pre>
             &nbsp;<strong>&lt;div <em>v-for="category in list.categories"</em>&gt;</strong><br/>
             &nbsp;&nbsp;&nbsp;<strong>&lt;h1&gt;</strong>{{ category.title }}<strong>&lt;/h1&gt;</strong><br/>
-            &nbsp;&nbsp;&nbsp;<strong>&lt;span&gt;</strong>{{ category.description }}<strong>&lt;/span&gt;</strong><br/>
+            &nbsp;&nbsp;&nbsp;<strong>&lt;span <em>v-html="category.description"</em>&gt;&lt;/span&gt;</strong><br/>
             &nbsp;&nbsp;&nbsp;...<br/>
             &nbsp;<strong>&lt;/div&gt;</strong><br/>
         </div>
@@ -95,14 +95,12 @@
             <div class="dr-muted">
                 &nbsp;<strong>&lt;div <em>v-for="category in list.categories"</em>&gt;</strong><br/>
                 &nbsp;&nbsp;&nbsp;<strong>&lt;h1&gt;</strong>{{ category.title }}<strong>&lt;/h1&gt;</strong><br/>
-                &nbsp;&nbsp;&nbsp;<strong>&lt;span&gt;</strong>{{ category.description }}<strong>
-                    &lt;/span&gt;</strong><br/>
+                &nbsp;&nbsp;&nbsp;<strong>&lt;span <em>v-html="category.description"</em>&gt;&lt;/span&gt;</strong><br/>
             </div>
             &nbsp;&nbsp;&nbsp;<strong>&lt;div <em>v-for="item in category.items"</em>&gt;</strong><br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;strong&gt;</strong>{{ item.title }}<strong>
                 &lt;/strong&gt;</strong><br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;span&gt;</strong>{{ item.description }}<strong>
-                &lt;/span&gt;</strong><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;span <em>v-html="item.description"</em>&gt;&lt;/span&gt;</strong><br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
             &nbsp;&nbsp;&nbsp;<strong>&lt;/div&gt;</strong><br/>
 

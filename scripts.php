@@ -94,7 +94,7 @@ return [
             'modified_on' => $now,
             'title' => 'Default Template',
             'description' => 'Listings built-in configurable template.',
-            'html' => '<h2 v-if="list.title" :class="settings.listingTitle || defaults.listingTitle" data-type="List Title">{{list.title}}</h2><div v-if="list.description" :class="settings.listingDescription || defaults.listingDescription" data-type="List Description">{{list.description}}</div><div :class="settings.categoryContainer || defaults.categoryContainer" v-for="category in list.categories | orderBy \'position\'" data-type="Category"> <section :class="settings.categoryTitleDescription || defaults.categoryTitleDescription"> <h3 v-if="category.title" :class="settings.categoryTitle || defaults.categoryTitle" data-type="Category Title">{{category.title}}</h3> <div v-if="category.description" :class="settings.categoryDescription || defaults.categoryDescription" data-type="Category Description">{{category.description}}</div></section> <section class="uk-list uk-flex uk-flex-column" :class="settings.itemContainer || defaults.itemContainer" data-type="Category Items"> <div class="uk-grid" :class="settings.itemContainer || defaults.itemContainer" v-for="item in category.items | orderBy \'position\'" data-type="Item" data-uk-grid-margin> <div v-if="item.image" :class="settings.itemImage || defaults.itemImage" data-type="Item Image"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title"> <img :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </a> <img v-else :src="item.image" title="{{item.name}}" alt="{{item.name}}"/> </div><dl v-if="item.title || item.description" :class="settings.itemTitleDescription || defaults.itemTitleDescription" data-type="Item Title and Description"> <dt v-if="item.title" :class="settings.itemTitle || defaults.itemTitle" data-type="Item Title"> <a v-if="item.link" :href="item.link" title="Item.title" alt="item.title">{{item.title}}</a> <div v-else>{{item.title}}</div></dt> <dd v-if="item.description" :class="settings.itemDescription || defaults.itemDescription" data-type="Item Description" v-html="item.description"> </dd> <div v-if="item.tags.length" :class="settings.itemTagsContainer || defaults.itemTagsContainer" data-type="Item Tags"> <div v-for="tag in item.tags" :class="settings.itemTag || defaults.itemTag" data-type="Tag">{{tag.title}}</div></div></dl> <div v-if="item.price" :class="settings.itemPrice || defaults.itemPrice" data-type="Item Price">{{item.price | currency}}</div></div></section></div>',
+            'html' => file_get_contents('views/admin/templates/default-template.php', FILE_USE_INCLUDE_PATH),
             'editable' => 0,
             'locked' => 1
         ]);
@@ -106,18 +106,7 @@ return [
             'modified_on' => $now,
             'title' => 'Image Showcase',
             'description' => 'Display a large image for each item with it\'s title and description.',
-            'html' => '<style>.accent-color{color: white;}</style>
-                    <h2>{{list.title}}</h2>
-                    <p v-html="list.description"></p>
-                    <ul class="uk-list" v-for="category in list.categories" data-uk-margin>
-                        <li v-for="item in category.items">
-                            <div class="uk-margin-top uk-margin-left uk-position-absolute">
-                                <h2 class="accent-color uk-text-uppercase uk-text-bold uk-margin-remove">{{item.title}}</h2>
-                                <span class="accent-color uk-text-small" v-html="item.description"></span>
-                            </div>
-                            <img class="uk-width-1-1" :src="item.image"/>
-                        </li>
-                    </ul>',
+            'html' => file_get_contents('views/admin/templates/image-showcase.php', FILE_USE_INCLUDE_PATH),
             'editable' => 1,
             'locked' => 0
         ]);
