@@ -1,11 +1,11 @@
 $(function () {
 
-    _.forEach($('.driven-listing-container'), function (value, index) {
+    _.forEach($('driven-listing-container'), function (value, index) {
         index++;
-        $(value).attr('id', 'list-' + index);
+        $(value).attr('data-list', index);
 
         new Vue({
-            el: '#list-' + index,
+            el: 'driven-listing-container[data-list="' + index + '"] slot',
             data: window['$listing_'+index],
             template: window['$listing_'+index].template.html,
             filters: {

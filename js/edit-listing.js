@@ -1,16 +1,16 @@
 $(function () {
 
-    _.each($data.listing.categories, function(cat){
+    _.each($data.listing.categories, function (cat) {
         console.log(cat.title + ': ' + cat.position);
-        _.each(cat.items, function(item){
+        _.each(cat.items, function (item) {
             console.log(item.title + ': ' + item.position);
         });
     });
 
     _.extend($data, {
-        item_form : {},
-        list_form : {},
-        new_tag : { title:'' }
+        item_form: {},
+        list_form: {},
+        new_tag: {title: ''}
     });
 
     var vue = new Vue({
@@ -37,7 +37,7 @@ $(function () {
             getItems: function (category) {
                 var items = [];
                 for (var item in category.items) {
-                    if (item)items.push(category.items[item]);
+                    if (item) items.push(category.items[item]);
                 }
                 return items;
             },
@@ -53,7 +53,7 @@ $(function () {
             },
             remove: function (id, type, title) {
                 var vm = this;
-                UIkit.modal.confirm("Delete " + this.$options.filters.capitalize(type) + "? <em>" + title + "</em><br><span class='uk-text-muted uk-text-small'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
+                UIkit.modal.confirm("Delete " + this.$options.filters.capitalize(type) + "? <em>" + title + "</em><br><span class='uk-text-muted'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
 
                     UIkit.notify('Deleting');
 
@@ -105,7 +105,7 @@ $(function () {
                 this.$http.post('admin/listings/positions', {positions: positions, type: type}).then(
                     function (res) {
                         UIkit.notify('Order Updated');
-                        this.listing.categories = res.data.listing.categories;
+                        //this.listing.categories = res.data.listing.categories;
                     }).catch(function () {
                     UIkit.notify('Couldn\'t Update Order');
                 })
@@ -122,7 +122,9 @@ $(function () {
                     listing_id: this.listing.id
                 }).then(
                     function (res) {
-                        if(this.listing.categories.length === 0){ this.listing.categories = {}; }
+                        if (this.listing.categories.length === 0) {
+                            this.listing.categories = {};
+                        }
                         Vue.set(this.listing.categories, res.data.category.id.toString(), res.data.category);
                         this.$refs.categorymodal.close();
                         UIkit.notify('Category Saved');
@@ -146,7 +148,9 @@ $(function () {
                 }).then(
                     function (res) {
 
-                        if(!this.listing.categories[res.data.item.category_id].items){ this.listing.categories[res.data.item.category_id].items = {}; }
+                        if (!this.listing.categories[res.data.item.category_id].items) {
+                            this.listing.categories[res.data.item.category_id].items = {};
+                        }
                         Vue.set(this.listing.categories[res.data.item.category_id].items, res.data.item.id.toString(), res.data.item);
 
                         this.$refs.itemmodal.close();
@@ -205,27 +209,27 @@ $(function () {
         _.each(rows, function (row, i) {
             positions.push({id: $(row).data().id, position: i});
         });
-        vue.savePositions(positions, 'categories');
+        vue.savePositions(positions, 'categories')
     }, 100));
 
     $('.sortable-items').on('change.uk.nestable', _.debounce(function (e, s, el, a) {
 
-            var positions = [];
-            var categories = $('#sortable-categories').find('.sortable-category');
+        var positions = [];
+        var categories = $('#sortable-categories').find('.sortable-category');
 
-            _.each(categories, function (category, i) {
-                var items = $(category).find('.sortable-item');
+        _.each(categories, function (category, i) {
+            var items = $(category).find('.sortable-item');
 
-                _.each(items, function (item, ii) {
-                    positions.push({
-                        id: $(item).data().id,
-                        position: ii,
-                        category_id: $(category).data().id
-                    })
-                });
-
+            _.each(items, function (item, ii) {
+                positions.push({
+                    id: $(item).data().id,
+                    position: ii,
+                    category_id: $(category).data().id
+                })
             });
-            vue.savePositions(positions, 'items');
-        }, 100));
+
+        });
+        vue.savePositions(positions, 'items');
+    }, 100));
 
 });

@@ -3,7 +3,7 @@
      data-type="List Description" v-html="list.description"></div>
 <div :class="settings.categoryContainer || defaults.categoryContainer"
      v-for="category in list.categories | orderBy 'position'" data-type="Category">
-    <section :class="settings.categoryTitleDescription || defaults.categoryTitleDescription">
+    <div :class="settings.categoryTitleDescription || defaults.categoryTitleDescription">
         <h3 v-if="category.title"
             :class="settings.categoryTitle || defaults.categoryTitle"
             data-type="Category Title">
@@ -12,8 +12,8 @@
              data-type="Category Description">
             {{category.description}}
         </div>
-    </section>
-    <section class="uk-list uk-flex uk-flex-column" :class="settings.itemContainer || defaults.itemContainer"
+    </div>
+    <div class="uk-list uk-flex uk-flex-column" :class="settings.itemContainer || defaults.itemContainer"
              data-type="Category Items">
         <div class="uk-grid" :class="settings.itemContainer || defaults.itemContainer"
              v-for="item in category.items | orderBy 'position'" data-type="Item" data-uk-grid-margin>
@@ -44,5 +44,5 @@
                 {{item.price | currency}}
             </div>
         </div>
-    </section>
+    </div>
 </div>

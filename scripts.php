@@ -2,7 +2,7 @@
 
 return [
 
-    'enable' => function ($app) {
+    'install' => function ($app) {
 
         $util = $app['db']->getUtility();
 
@@ -153,7 +153,7 @@ return [
             'title' => 'Another Category',
             'description' => 'Another group of items',
             'image' => '',
-            'position' => 0,
+            'position' => 1,
             'status' => 1,
             'featured_from'=>'',
             'featured_to'=>''

@@ -5,7 +5,6 @@ namespace Driven\Listings\Controller;
 use Pagekit\Application as App;
 use Driven\Listings\Model\ListingCategory as Category;
 use Driven\Listings\Model\Listing;
-use Pagekit\User\Model\Role;
 
 /**
  * @Access(admin=true)

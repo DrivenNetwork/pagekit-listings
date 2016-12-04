@@ -17,7 +17,7 @@ $(function () {
 
             remove: function (id, title) {
                 var vm = this;
-                UIkit.modal.confirm("Delete Template? <em>" + title + "</em><br><span class='uk-text-muted uk-text-small'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
+                UIkit.modal.confirm("Delete Template? <em>" + title + "</em><br><span class='uk-text-muted'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
 
                     UIkit.notify('Deleting');
 

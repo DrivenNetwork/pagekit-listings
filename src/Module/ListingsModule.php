@@ -49,14 +49,14 @@ class ListingsModule extends Module
             $template = Template::find($list->template_id);
 
             // Sort Categories and Update Key Index
-            usort($list->categories, function ($cat1, $cat2) {
-                return $cat1->position <=> $cat2->position;
+            usort($list->categories, function ($a, $b) {
+                return ($a->position < $b->position) ? -1 : (($a->position > $b->position) ? 2 : 1);
             });
 
             // Sort Items and Update Key Index
             foreach($list->categories as $sortCategory){
-                usort($sortCategory->items, function ($item1, $item2) {
-                    return $item1->position <=> $item2->position;
+                usort($sortCategory->items, function ($a, $b) {
+                    return ($a->position < $b->position) ? -1 : (($a->position > $b->position) ? 2 : 1);
                 });
             }
         }

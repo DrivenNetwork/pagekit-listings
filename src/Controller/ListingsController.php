@@ -46,10 +46,10 @@ class ListingsController
             if (!$listing = Listing::query()->where('id = ?', [$id])
                 ->related(['categories' => function ($query) {
                     return $query
-                        ->orderBy('position')
+//                        ->orderBy('position')
                         ->related(['items' => function ($query) {
-                            return $query
-                                ->orderBy('position');
+                            return $query;
+//                                ->orderBy('position');
                         }]);
                 }])->first()) {
 
@@ -102,17 +102,17 @@ class ListingsController
 
             $templates = Template::findAll();
 
-            // Sort Categories and Update Key Index
-            usort($listing->categories, function ($cat1, $cat2) {
-                return $cat1->position <=> $cat2->position;
-            });
-
-            // Sort Items and Update Key Index
-            foreach($listing->categories as $sortCategory){
-                usort($sortCategory->items, function ($item1, $item2) {
-                    return $item1->position <=> $item2->position;
-                });
-            }
+//            // Sort Categories and Update Key Index
+//            usort($listing->categories, function ($a, $b) {
+//                return ($a->position < $b->position) ? -1 : (($a->position > $b->position) ? 1 : 0);
+//            });
+//
+//            // Sort Items and Update Key Index
+//            foreach($listing->categories as $sortCategory){
+//                usort($sortCategory->items, function ($a, $b) {
+//                    return ($a->position < $b->position) ? -1 : (($a->position > $b->position) ? 1 : 0);
+//                });
+//            }
 
             $payload = [
                 '$view' => [
@@ -267,12 +267,16 @@ class ListingsController
                 // Can't Find Category
 
             } else {
+
                 $listing = Listing::query()->related('categories')->related('categories.items')->where('id = ?', [$category->listing_id])->first();
                 $listing->modified_by = $user->id;
                 $listing->modified_on = $now;
                 $listing->save();
 
-                // TODO: Delete Children Items
+                $items = Item::query()->where('category_id = ?', [$category->id])->get();
+                foreach ($items as $item){
+                    $item->delete();
+                }
 
                 $cached = $category;
                 $category->delete();
