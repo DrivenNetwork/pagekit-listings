@@ -2,9 +2,9 @@
   "name": "driven/listings",
   "module": "driven/listings",
   "type": "pagekit-extension",
-  "version": "1.0",
+  "version": "1.0.1",
   "title": "Listings",
-  "description": "Create lists for menus, products, events or listed items",
+  "description": "Listings provides a clean way to create manageable content for your site. Create any type of listed content like professional portfolios, products showcase, events, restaurant menus and more.\r\nQuickly build your list by using the built-in Default Template which can be easily configured to showcase your content as you want or create custom templates for your content.",
   "authors": [
     {
       "name": "driven.",
@@ -17,6 +17,8 @@
     "icon": "icon.svg"
   },
   "archive": {
-    "exclude": ["node_modules"]
+    "exclude": [
+      "node_modules"
+    ]
   }
 }

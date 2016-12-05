@@ -1,12 +1,5 @@
 $(function () {
 
-    _.each($data.listing.categories, function (cat) {
-        console.log(cat.title + ': ' + cat.position);
-        _.each(cat.items, function (item) {
-            console.log(item.title + ': ' + item.position);
-        });
-    });
-
     _.extend($data, {
         item_form: {},
         list_form: {},
@@ -53,7 +46,7 @@ $(function () {
             },
             remove: function (id, type, title) {
                 var vm = this;
-                UIkit.modal.confirm("Delete " + this.$options.filters.capitalize(type) + "? <em>" + title + "</em><br><span class='uk-text-muted'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
+                UIkit.modal.confirm("Delete " + this.$options.filters.capitalize(type) + "? <em>" + title + "</em><br><span class='uk-text-small uk-text-bold uk-text-warning'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
 
                     UIkit.notify('Deleting');
 
@@ -147,7 +140,7 @@ $(function () {
                     category_id: this.item.category_id
                 }).then(
                     function (res) {
-
+debugger;
                         if (!this.listing.categories[res.data.item.category_id].items) {
                             this.listing.categories[res.data.item.category_id].items = {};
                         }
