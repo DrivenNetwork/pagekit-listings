@@ -5,7 +5,7 @@
 </p>
 
 <p>
-    To create a custom template go to the <a href="/admin/listings/templates" title="Templates Page">Templates</a> page. From there you can
+    To create a custom template go to the <a :href="'templates'" title="Templates Page">Templates</a> page. From there you can
     click on the <em class="uk-text-primary uk-text-uppercase">Add Template</em> button to begin.
 </p>
 

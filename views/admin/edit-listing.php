@@ -18,7 +18,7 @@
 
             <div data-uk-margin>
 
-                <a class="uk-button uk-margin-small-right" v-if="!listing.id" :href="$url.route('admin/listings/')">
+                <a class="uk-button uk-margin-small-right" v-if="!listing.id" :href="'../listings'">
                     {{ 'Cancel' | trans }}
                 </a>
                 <button class="uk-button uk-margin-small-right" v-if="listing.id"
@@ -175,8 +175,8 @@
                                                                     item.price | currency }}</em>
 
                                                             </a>
-                                                            <i class="uk-text-muted uk-icon-image" v-show="item.image"
-                                                               data-uk-lightbox href="/{{item.image}}"></i>
+                                                            <a href="#"><i class="uk-text-muted uk-icon-image" v-show="item.image"
+                                                               data-uk-lightbox :href="$url(item.image)"></i></a>
                                                         </div>
                                                         <div class="uk-text-small" v-html="item.description"></div>
 

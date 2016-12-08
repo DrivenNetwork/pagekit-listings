@@ -3,7 +3,7 @@
     The default template offers many configurable options out of the box. Options are implemented
     when using the <em>PLUGIN CODE</em>.
     Each list you create has it's unique plugin code, which can be found on the <a
-        href="/admin/listings" title="Listings Page">Listings</a> page.
+        :href="'../listings'" title="Listings Page">Listings</a> page.
 </p>
 <p>
     To use the plugin code simply copy and paste it in your page's content area. The values for each

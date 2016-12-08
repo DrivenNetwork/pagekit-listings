@@ -6,6 +6,9 @@ return [
 
         $util = $app['db']->getUtility();
 
+        rename('packages/driven/listings/img/listings-sample-00.jpeg', 'storage/listings-sample-00.jpeg');
+        rename('packages/driven/listings/img/listings-sample-01.jpeg', 'storage/listings-sample-01.jpeg');
+
         if ($util->tableExists('@listings_listing') === false) {
             $util->createTable('@listings_listing', function ($table) {
                 $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
@@ -169,7 +172,7 @@ return [
             'modified_on' => $now,
             'title' => 'Sample Item',
             'description' => 'This is the description for the item',
-            'image' => 'packages/driven/listings/img/sample-0.jpeg',
+            'image' => 'storage/listings-sample-00.jpeg',
             'position' => 0,
             'status' => 1,
             'link' => 'https://driven.network/',
@@ -190,7 +193,7 @@ return [
             'modified_on' => $now,
             'title' => 'Sample Item 2',
             'description' => 'You can <strong>DRAG ME</strong> to "Another Category"',
-            'image' => 'packages/driven/listings/img/sample-1.jpeg',
+            'image' => 'storage/listings-sample-01.jpeg',
             'position' => 1,
             'status' => 1,
             'link' => 'https://driven.network/',

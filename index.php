@@ -12,7 +12,7 @@ return [
         'Driven\\Listings\\' => 'src'
     ],
 
-    'settings' => '/admin/listings',
+    'settings' => '@listings',
 
     'resource' => [
         'driven/listings:' => ''

@@ -14,7 +14,7 @@
 
 <h4><i class="uk-icon-angle-right uk-text-primary"></i> {{ 'Usage' | trans }}</h4>
 <p>
-    To display one or many listings on a page copy and paste the PLUGIN CODE for each list on your Pagekit page. The plugin code for each list can be found on the <a href="/admin/listings" title=""Listings Page">Listings</a> page.
+    To display one or many listings on a page copy and paste the PLUGIN CODE for each list on your Pagekit page. The plugin code for each list can be found on the <a :href="'../listings'" title=""Listings Page">Listings</a> page.
 
 </p>
 

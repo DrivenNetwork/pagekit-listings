@@ -18,7 +18,7 @@
             <div v-if="template.editable" data-uk-margin>
 
                 <a class="uk-button uk-margin-small-right" v-if="!template.id"
-                   :href="$url.route('admin/listings/templates')">
+                   :href="'../templates'">
                     {{ 'Cancel' | trans }}
                 </a>
                 <button class="uk-button uk-margin-small-right" v-if="template.id"

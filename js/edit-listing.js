@@ -39,7 +39,7 @@ $(function () {
                 this.$http.post('admin/listings/save', {data: this.listing}).then(
                     function (res) {
                         UIkit.notify('Saved');
-                        if (this.listing.id !== res.data.listing.id) window.location.href = '/admin/listings/edit?id=' + res.data.listing.id;
+                        if (this.listing.id !== res.data.listing.id) window.location.href = 'edit?id=' + res.data.listing.id;
                     }).catch(function () {
                     UIkit.notify('Couldn\'t Save');
                 })
@@ -57,7 +57,7 @@ $(function () {
 
                             if ((type === 'listing') && (_.last(window.location.href.split('/')).substr(0, 4))) {
 
-                                window.location.href = '/admin/listings/';
+                                window.location.href = '.';
                                 Vue.delete(vm.listing, id);
 
                             } else if (type === 'category') {
@@ -140,7 +140,6 @@ $(function () {
                     category_id: this.item.category_id
                 }).then(
                     function (res) {
-debugger;
                         if (!this.listing.categories[res.data.item.category_id].items) {
                             this.listing.categories[res.data.item.category_id].items = {};
                         }

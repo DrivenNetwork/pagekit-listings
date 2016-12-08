@@ -9,7 +9,7 @@ $(function () {
                 this.$http.post('admin/listings/templates/save', {data: this.template}).then(
                     function (res) {
                         UIkit.notify('Saved');
-                        if (this.template.id !== res.data.template.id) window.location.href = '/admin/listings/templates/edit?id=' + res.data.template.id;
+                        if (this.template.id !== res.data.template.id) window.location.href = 'edit?id=' + res.data.template.id;
                     }).catch(function () {
                     UIkit.notify('Couldn\'t Save');
                 })
@@ -26,7 +26,7 @@ $(function () {
 
                             UIkit.notify('Template Deleted');
 
-                            window.location.href = '/admin/listings/templates';
+                            window.location.href = '.';
 
                         }).catch(function () {
                         UIkit.notify('Couldn\'t Delete');
