@@ -5,7 +5,7 @@ $(function () {
         methods: {
 
             save: function () {
-                UIkit.notify('Saving');
+
                 this.$http.post('admin/listings/templates/save', {data: this.template}).then(
                     function (res) {
                         UIkit.notify('Saved');
@@ -18,8 +18,6 @@ $(function () {
             remove: function (id, title) {
                 var vm = this;
                 UIkit.modal.confirm("Delete Template? <em>" + title + "</em><br><span class='uk-text-small uk-text-bold uk-text-warning'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
-
-                    UIkit.notify('Deleting');
 
                     vue.$http.post('admin/listings/templates/delete', {id: id}).then(
                         function (res) {

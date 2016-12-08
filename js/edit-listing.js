@@ -35,7 +35,7 @@ $(function () {
                 return items;
             },
             save: function () {
-                UIkit.notify('Saving');
+
                 this.$http.post('admin/listings/save', {data: this.listing}).then(
                     function (res) {
                         UIkit.notify('Saved');
@@ -48,7 +48,6 @@ $(function () {
                 var vm = this;
                 UIkit.modal.confirm("Delete " + this.$options.filters.capitalize(type) + "? <em>" + title + "</em><br><span class='uk-text-small uk-text-bold uk-text-warning'><i class='uk-icon-warning uk-text-warning'></i> This cannot be undone</span>", function () {
 
-                    UIkit.notify('Deleting');
 
                     vue.$http.post('admin/listings/delete', {id: id, type: type}).then(
                         function (res) {
@@ -108,8 +107,6 @@ $(function () {
 
                 this.category = this.category_model;
 
-                UIkit.notify('Saving');
-
                 this.$http.post('admin/listings/category/save', {
                     data: this.category,
                     listing_id: this.listing.id
@@ -131,8 +128,6 @@ $(function () {
             saveItem: function () {
 
                 this.item = this.item_model;
-
-                UIkit.notify('Saving');
 
                 this.$http.post('admin/listings/category/item/save', {
                     data: this.item,
