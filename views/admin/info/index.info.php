@@ -26,23 +26,23 @@
             <ul id="listings-info-content" class="uk-switcher">
 
                 <li>
-                    <? include 'overview.php'; ?>
+                    <?php include 'overview.php'; ?>
                 </li>
 
                 <li>
-                    <? include 'default-template.php';?>
+                    <?php include 'default-template.php';?>
                 </li>
 
                 <li>
-                    <? include 'custom-templates.php';?>
+                    <?php include 'custom-templates.php';?>
                 </li>
 
                 <li>
-                    <? include 'data-model.php'; ?>
+                    <?php include 'data-model.php'; ?>
                 </li>
 
                 <li>
-                    <? include 'about.php';?>
+                    <?php include 'about.php';?>
                 </li>
 
             </ul>
