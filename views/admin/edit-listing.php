@@ -71,7 +71,7 @@
                 <!--                           data-uk-timepicker="{format:'12h'}">-->
                 <!--                    <p class="uk-form-help-block uk-text-danger"-->
                 <!--                       v-show="list_form && (list_form.featuredFrom.invalid || list_form.featuredTo.invalid)">-->
-                <? //= __('Please select a valid time.') ?><!--</p>-->
+                <?php //= __('Please select a valid time.') ?><!--</p>-->
                 <!--                </div>-->
 
                 <div class="uk-form-row uk-flex uk-flex-column">
@@ -219,8 +219,8 @@
 
     </form>
 
-    <? include 'modal-category.php'; ?>
-    <? include 'modal-item.php'; ?>
+    <?php include 'modal-category.php'; ?>
+    <?php include 'modal-item.php'; ?>
 
 </section>
 
