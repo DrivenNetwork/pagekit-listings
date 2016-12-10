@@ -1,5 +1,8 @@
 <?php
 
+use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Schema\Comparator;
+
 return [
 
     'install' => function ($app) {
@@ -80,7 +83,7 @@ return [
                 $table->addColumn('modified_on', 'integer', ['notnull' => false, 'length' => 11]);
                 $table->addColumn('title', 'string', ['length' => 255]);
                 $table->addColumn('description', 'string', ['length' => 255]);
-                $table->addColumn('html', 'string');
+                $table->addColumn('html', 'text');
                 $table->addColumn('editable', 'smallint', ['default' => 1]);
                 $table->addColumn('locked', 'smallint', ['default' => 0]);
                 $table->setPrimaryKey(['id']);
@@ -227,6 +230,31 @@ return [
         }
     },
 
-    'updates' => []
+    'updates' => [
+
+        '1.?.?' => function ($app) {
+            $util    = $app['db']->getUtility();
+            $manager = $util->getSchemaManager();
+
+            if ($util->tableExists('@listings_template')) {
+                $tableOld = $util->listTableDetails('@listings_template');
+
+                if ($tableOld->hasColumn('html')) {
+                    $table = clone $tableOld;
+
+                    $column = $table->getColumn('html');
+                    $column->setLength(null);
+                    $column->setType(Type::getType('text'));
+
+                    $comparator = new Comparator;
+                    $manager->alterTable($comparator->diffTable($tableOld, $table));
+
+                    $app['db']->update('@listings_template', array('html' => file_get_contents('views/admin/templates/default-template.php', FILE_USE_INCLUDE_PATH)), array('id' => 1));
+                    $app['db']->update('@listings_template', array('html' => file_get_contents('views/admin/templates/image-showcase.php', FILE_USE_INCLUDE_PATH),), array('id' => 2));
+                }
+            }
+        }
+
+    ]
 
 ];
