@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - December 9, 2016
+
+### Update templates table - "html" column type string to text
+- Changed column "HTML" type from string to text.[Pull Request #5](https://github.com/DrivenNetwork/pagekit-listings/pull/5)
+
 ## 1.0.2 - December 7, 2016
 
 ### Fixed Routing Issues
