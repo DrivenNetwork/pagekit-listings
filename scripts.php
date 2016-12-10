@@ -232,7 +232,7 @@ return [
 
     'updates' => [
 
-        '1.?.?' => function ($app) {
+        '1.0.3' => function ($app) {
             $util    = $app['db']->getUtility();
             $manager = $util->getSchemaManager();
 
