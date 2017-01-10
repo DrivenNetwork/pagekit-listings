@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4 - January 10, 2017
+
+### Removed Short Tags and Duplicate UIKit
+- Removed/replaced php short tags from list generating page.
+- Removed 'uikit.css' from list generating page. Defaults to theme's uikit.css
+
 ## 1.0.3 - December 9, 2016
 
 ### Update templates table - "html" column type string to text
