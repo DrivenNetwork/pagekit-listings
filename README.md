@@ -1,5 +1,5 @@
 
-[![Driven Network & Pagekit Banner](https://driven.network/storage/github-driven-pagekit.png "Driven Network & Pagekit Banner")](https://driven.network/ "Driven Network, LLC")
+[![Driven Network & Pagekit Banner](https://github.com/DrivenNetwork/pagekit-listings/blob/master/img/github-driven-pagekit.png?raw=true "Driven Network & Pagekit Banner")](https://driven.network/ "Driven Network, LLC")
 
 Pagekit Listings
 ================
