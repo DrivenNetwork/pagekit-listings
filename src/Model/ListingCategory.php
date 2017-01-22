@@ -72,8 +72,6 @@ class ListingCategory
 
     /** @var array */
     protected static $properties = [
-        'editor' => 'getEditor',
-        'creator' => 'getCreator',
         'status' => 'isActive'
     ];
 
@@ -83,18 +81,6 @@ class ListingCategory
             self::STATUS_ACTIVE => __('Active'),
             self::STATUS_INACTIVE => __('Inactive')
         ];
-    }
-
-    public function getStatusText()
-    {
-        $statuses = self::getStatuses();
-
-        return isset($statuses[$this->status]) ? $statuses[$this->status] : __('Unknown');
-    }
-
-    public function getEditor()
-    {
-        return $this->user ? $this->user->username : null;
     }
 
     public function isActive()

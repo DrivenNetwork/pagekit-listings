@@ -59,12 +59,6 @@ class Template
 
     /** @var array */
     protected static $properties = [
-        'editor' => 'getEditor',
         'creator' => 'getCreator'
     ];
-
-    public function getEditor()
-    {
-        return $this->user ? $this->user->username : null;
-    }
 }

@@ -17,7 +17,11 @@ class ListingsController
     public function indexAction()
     {
 
-        $data = Listing::query()->related('editor')->related('template')->get();
+        $data = Listing::query()
+            ->related(['editor' => function($query) {
+                return $query->select('id', 'username');
+            }])
+            ->related('template')->get();
 
         return [
             '$view' => [
@@ -46,10 +50,8 @@ class ListingsController
             if (!$listing = Listing::query()->where('id = ?', [$id])
                 ->related(['categories' => function ($query) {
                     return $query
-//                        ->orderBy('position')
                         ->related(['items' => function ($query) {
                             return $query;
-//                                ->orderBy('position');
                         }]);
                 }])->first()) {
 
