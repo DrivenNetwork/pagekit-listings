@@ -2,7 +2,7 @@
   "name": "driven/listings",
   "module": "driven/listings",
   "type": "pagekit-extension",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "title": "Listings",
   "description": "Listings provides a clean way to create manageable content for your site. Create any type of listed content like professional portfolios, products showcase, events, restaurant menus and more.\r\nQuickly build your list by using the built-in Default Template which can be easily configured to showcase your content as you want or create custom templates for your content.",
   "authors": [

@@ -1,11 +1,15 @@
 # Changelog
 
+## 1.0.6 - January 23, 2017
+
+### Removed Unnecessary Exposed Data from Frontend
+- Trimmed returned Editor object to necessary data. Resolves[Issue #10](https://github.com/DrivenNetwork/pagekit-listings/issues/10)
+
 ## 1.0.5 - January 22, 2017
 
 ### Clean Up | Removed Unnecessary Exposed Data
 - Removed incomplete features code.
 - Trimmed returned Editor object to necessary data. Resolves[Issue #10](https://github.com/DrivenNetwork/pagekit-listings/issues/10)
-
 
 ## 1.0.4 - January 10, 2017
 

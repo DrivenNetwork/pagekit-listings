@@ -61,11 +61,6 @@ class ListingCategory
     public $creator;
 
     /**
-     * @BelongsTo(targetEntity="Pagekit\User\Model\User", keyFrom="modified_by")
-     */
-    public $editor;
-
-    /**
      * @HasMany(targetEntity="Driven\Listings\Model\Item", keyFrom="id", keyTo="category_id")
      */
     public $items;

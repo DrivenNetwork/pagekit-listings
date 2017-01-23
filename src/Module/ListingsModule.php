@@ -31,7 +31,6 @@ class ListingsModule extends Module
         if (!$list = Listing::query()
             ->where('id = ?', [$listing_id])
             ->where('status = ?', [1])
-            ->related('editor')
             ->related(['categories' => function ($query) {
                 return $query
                     ->orderBy('position')
